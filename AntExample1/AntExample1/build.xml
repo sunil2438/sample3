@@ -6,11 +6,28 @@
 	<property name="tomcat-manager-password" value="admin" />
 	<property name="project-name" value="AntExample" />
 	<property name="warpath" value="./dist/${project-name}.war" />
+	<property name="catalina-ant-dir" value="./dist/${project-name}.war" />
+	<property name="appserver.lib" value="D://apache-tomcat-7.0.67//lib" />
+	<property name="appserver.home" value="D://apache-tomcat-7.0.67" />
 
-	<taskdef name="start" classname="org.apache.catalina.ant.StartTask" />
-	<taskdef name="stop" classname="org.apache.catalina.ant.StopTask" />
-	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" />
-	<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" />
+	<path id="catalina-ant-classpath">
+    	<fileset dir="${appserver.lib}">
+        	   	<include name="catalina-ant.jar"/>
+           		<include name="tomcat-coyote.jar"/>
+           		<include name="tomcat-util.jar"/>
+        </fileset>
+    	<fileset dir="${appserver.home}/bin">
+        	       <include name="tomcat-juli.jar"/>
+    	</fileset>
+	</path>
+
+	<taskdef name="start" classname="org.apache.catalina.ant.StartTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="stop" classname="org.apache.catalina.ant.StopTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" classpathref="catalina-ant-classpath" />
+	<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="catalina-ant-classpath"/>
+
+
+
 	<path id="compile.classpath">
 		<fileset dir="WebContent/WEB-INF/lib">
 			<include name="*.jar"/>
