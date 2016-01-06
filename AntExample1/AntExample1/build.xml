@@ -68,6 +68,6 @@
 			war="${warpath}"
 		/>
 	</target>
-	<target name="deploy" depends="undeploy,deploy" />
+	<target name="deploywar" depends="undeploy,deploy" />
 	
 </project>
