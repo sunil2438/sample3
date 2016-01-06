@@ -1,6 +1,16 @@
 <?xml version="1.0" ?> 
 <project name="AntExample1" default="war">
 
+	<property name="tomcat-manager-url" value="http://192.168.152.25:8080/manager" />
+	<property name="tomcat-manager-username" value="admin" />
+	<property name="tomcat-manager-password" value="admin" />
+	<property name="project-name" value="AntExample" />
+	<property name="warpath" value="./dist/${project-name}.war" />
+
+	<taskdef name="start" classname="org.apache.catalina.ant.StartTask" />
+	<taskdef name="stop" classname="org.apache.catalina.ant.StopTask" />
+	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" />
+	<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" />
 	<path id="compile.classpath">
 		<fileset dir="WebContent/WEB-INF/lib">
 			<include name="*.jar"/>
@@ -13,7 +23,7 @@
 	</target>
 	
 	<target name="compile" depends="init" >
-		<javac destdir="build/classes" debug="true" srcdir="src">
+		<javac destdir="build/classes" debug="true" srcdir="src" source="1.7" target="1.7">
 			<classpath refid="compile.classpath"/>
 		</javac>
 	</target>
@@ -30,5 +40,34 @@
 		<delete dir="dist" />
 		<delete dir="build" />
 	</target>
+	<target name="stop" description="stop application in tomcat">
+		<stop url="${tomcat-manager-url}" username="${tomcat-manager-username}"
+			password="${tomcat-manager-password}" path="/${project-name}" />
+	</target>
+
+	<target name="start" description="start application in tomcat">
+		<start url="${tomcat-manager-url}" username="${tomcat-manager-username}"
+			password="${tomcat-manager-password}" path="/${project-name}" />
+	</target>
+	<target name="undeploy" description="undeploy from tomcat">
+		<undeploy 
+			failonerror="no"
+			url="${tomcat-manager-url}"
+			username="${tomcat-manager-username}"
+			password="${tomcat-manager-password}"
+			path="/${project-name}"
+		/>
+	</target>
+		<target name="deploy" description="deploy to tomcat">
+		<echo>deploying from client</echo>
+		<deploy 
+			url="${tomcat-manager-url}"
+			username="${tomcat-manager-username}"
+			password="${tomcat-manager-password}"
+			path="/${project-name}"
+			war="${warpath}"
+		/>
+	</target>
+	<target name="deploy" depends="undeploy,deploy" />
 	
 </project>
