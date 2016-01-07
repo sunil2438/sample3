@@ -1,9 +1,9 @@
 <?xml version="1.0" ?> 
 <project name="AntExample1" default="war">
 
-	<property name="tomcat-manager-url" value="http://192.168.152.25:8080/manager" />
-	<property name="tomcat-manager-username" value="admin" />
-	<property name="tomcat-manager-password" value="admin" />
+	<property name="tomcat-manager-url" value="http://192.168.152.25:8080/manager/text" />
+	<property name="tomcat-manager-username" value="gbids" />
+	<property name="tomcat-manager-password" value="tomcat" />
 	<property name="project-name" value="AntExample" />
 	<property name="warpath" value="./dist/${project-name}.war" />
 	<property name="catalina-ant-dir" value="./dist/${project-name}.war" />
