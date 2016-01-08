@@ -1,3 +1,1 @@
-tomcat-manager-url=http://192.168.152.25:8080/manager/text tomcat-manager-username=gbids tomcat-manager-password=tomcat
-tomcat-manager-url=http://192.168.152.25:8080/manager/text tomcat-manager-username=gbids tomcat-manager-password=tomcat
 tomcat-manager-url=http://localhost:8080/manager/text tomcat-manager-username=admin tomcat-manager-password=admin
