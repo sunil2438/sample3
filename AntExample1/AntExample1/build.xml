@@ -16,7 +16,7 @@
            		<include name="tomcat-coyote.jar"/>
            		<include name="tomcat-util.jar"/>
         </fileset>
-    	<fileset dir="${appserver.home}/bin">
+    	<fileset dir="${appserver.home}">
         	       <include name="tomcat-juli.jar"/>
     	</fileset>
 	</path>
