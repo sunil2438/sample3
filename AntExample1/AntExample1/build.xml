@@ -7,8 +7,8 @@
 	<property name="project-name" value="AntExample" />
 	<property name="warpath" value="./dist/${project-name}.war" />
 	<property name="catalina-ant-dir" value="./dist/${project-name}.war" />
-	<property name="appserver.lib" value="D://apache-tomcat-7.0.67//lib" />
-	<property name="appserver.home" value="D://apache-tomcat-7.0.67" />
+	<property name="appserver.lib" value="./lib" />
+	<property name="appserver.home" value="./lib" />
 
 	<path id="catalina-ant-classpath">
     	<fileset dir="${appserver.lib}">
