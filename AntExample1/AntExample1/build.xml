@@ -1,7 +1,7 @@
 <?xml version="1.0" ?> 
 <project name="AntExample1" default="war">
 
-	<property name="tomcat-manager-url" value="http://192.168.152.189:8090/manager/html" />
+	<property name="tomcat-manager-url" value="http://192.168.152.189:8090/manager/text" />
 	<property name="tomcat-manager-username" value="tomcat" />
 	<property name="tomcat-manager-password" value="tomcat" />
 	<property name="project-name" value="AntExample" />
